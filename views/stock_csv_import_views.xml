@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View -->
+        <record id="view_stock_csv_import_form" model="ir.ui.view">
+            <field name="name">stock.csv.import.form</field>
+            <field name="model">stock.csv.import</field>
+            <field name="arch" type="xml">
+                <form string="Import Stock from CSV/XLSX">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,processing,done"/>
+                    </header>
+                    
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="state" invisible="1"/>
+                                Stock Import
+                            </h1>
+                        </div>
+                        
+                        <group name="file_upload" invisible="state != 'draft'">
+                            <group>
+                                <field name="file_data" filename="filename" required="1" 
+                                       widget="binary" 
+                                       options="{'accepted_file_extensions': '.csv,.xlsx,.xls'}"/>
+                                <field name="filename" invisible="1"/>
+                            </group>
+                            <group>
+                                <div class="alert alert-info" role="alert">
+                                    <strong>Supported formats:</strong> CSV, XLSX<br/>
+                                    <strong>Required columns:</strong><br/>
+                                    • SKU: sku, default_code, internal_reference, reference<br/>
+                                    • Quantity: quantity, stock_quantity, qty, stock_qty
+                                </div>
+                            </group>
+                        </group>
+                        
+                        <group name="results" invisible="state not in ['processing', 'done', 'error']">
+                            <group>
+                                <field name="import_date"/>
+                                <field name="filename"/>
+                            </group>
+                            <group>
+                                <field name="imported_count"/>
+                                <field name="error_count"/>
+                            </group>
+                        </group>
+                        
+                        <notebook invisible="state not in ['processing', 'done', 'error']">
+                            <page string="Import Log" name="import_log">
+                                <field name="log_message" nolabel="1" widget="text" 
+                                       readonly="1"
+                                       options="{'resizable': true}"
+                                       style="font-family: monospace; font-size: 12px; min-height: 300px;"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    
+                    <footer>
+                        <button name="import_stock_from_csv" type="object" string="Import" 
+                                invisible="state != 'draft'" class="btn-primary"/>
+                        <button name="action_reset" type="object" string="New Import" 
+                                invisible="state not in ['done', 'error']" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Action -->
+        <record id="action_stock_csv_import" model="ir.actions.act_window">
+            <field name="name">Import Stock from CSV/XLSX</field>
+            <field name="res_model">stock.csv.import</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_stock_csv_import_form"/>
+        </record>
+        
+        <!-- Menu Item -->
+        <menuitem id="menu_stock_csv_import" 
+                  name="Import Stock CSV/XLSX"
+                  action="action_stock_csv_import"
+                  parent="stock.menu_stock_root"
+                  sequence="20"
+                  groups="stock.group_stock_user"/>
+    </data>
+</odoo>
