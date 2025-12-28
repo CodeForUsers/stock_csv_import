@@ -1,6 +1,6 @@
 {
     'name': 'Stock Import from CSV/XLSX',
-    'version': '19.0.0.0.0',
+    'version': '19.0.1.0.0',
     'category': 'Inventory',
     'summary': 'Import stock quantities from CSV/XLSX files',
     'description': """
@@ -15,6 +15,9 @@ Features:
 - Safe transaction handling
     """,
     'author': 'David Carreres Gómez',
+    'website': 'https://carreres.es',
+    'support': 'david@carreres.es',
+    'maintainer': 'David Carreres Gómez',
     'license': 'OPL-1',
     'price': 20.00,
     'currency': 'EUR',
