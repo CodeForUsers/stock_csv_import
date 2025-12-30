@@ -1,11 +1,10 @@
 {
-    'name': 'Stock Import from CSV/XLSX',
+    'name': 'NEXUS: Stock Import from CSV/XLSX',
     'version': '19.0.1.0.0',
     'category': 'Inventory',
     'summary': 'Import stock quantities from CSV/XLSX files',
     'description': """
 Import stock quantities from CSV or XLSX files with batch processing optimized for 4000+ products.
-Done by David Carreres Gomez
 
 Features:
 - Batch processing optimized for 4000+ products
@@ -19,7 +18,7 @@ Features:
     'support': 'david@carreres.es',
     'maintainer': 'David Carreres Gómez',
     'license': 'OPL-1',
-    'price': 20.00,
+    'price': 15.90,
     'currency': 'EUR',
     'depends': ['stock'],
     'data': [
@@ -33,5 +32,5 @@ Features:
     'external_dependencies': {
         'python': ['openpyxl'],
     },
-    # by David Carreres Gomez
+
 }
