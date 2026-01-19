@@ -17,8 +17,8 @@ Features:
     'website': 'https://carreres.es',
     'support': 'david@carreres.es',
     'maintainer': 'David Carreres Gómez',
-    'license': 'OPL-1',
-    'price': 15.90,
+    'license': 'AGPL-3',
+    'price': 0.0,
     'currency': 'EUR',
     'depends': ['stock'],
     'data': [
