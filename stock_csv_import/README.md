@@ -41,4 +41,4 @@ David Carreres Gómez
 
 ## License
 
-OPL-1
+AGPL-3
